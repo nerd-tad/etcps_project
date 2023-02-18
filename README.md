@@ -11,7 +11,6 @@ There are few modules to perform the complete task that the system intends to pe
 <br>
 
 ## System Components
-<br>
 
 * ### **Object Detection Node**  
 
