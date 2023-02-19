@@ -133,4 +133,27 @@ Refer [setting up cv_bridge](https://medium.com/@beta_b0t/how-to-setup-ros-with-
 <br>
 
 ## **Running the program**
+<br>
 
+Since there are few components in the project either it is possible to run the program by activating each node seperately or it could be run by activating all the nodes using roslaunch file that is configured in the GUI package.
+
+1. Activating each node at a time
+```python
+#start the darknet-ros nodes(and wait till it completes initiating)
+roslaunch darknet-ros yolov3.launch
+
+#start the collision detection node and gui nodes (the order you activate them are not crucial)
+rosrun col_det_pkgv2 collision_detection_node_v1.py 
+rosrun gui_pkgv2 gui_final.py
+
+
+#finally activate the node for video stream.
+rosrun reolink_read reolink_pub.py
+```  
+2. Activating all the nodes at once.
+```
+roslaunch gui_pkgv2 launch_file.launch
+```
+Few points to note -  
+- You can change the video source by editing the input (video source) of the ```cv2.VideoCapture```, and for testing purposes you can use a video file for that.
+- Since it is stil in the developing state a **cronjob** for starting the program at the startup of the PC or jetson board has not been set yet, but in the production it is better if you can set one.
